@@ -5,6 +5,6 @@
 	export let data: FileNode;
 </script>
 
-<div class="list-disc">
+<div>
 	<Tree tree={data} />
 </div>

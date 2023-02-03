@@ -14,7 +14,7 @@ function _walk(dir: string): FileNode[] {
         const type = fs.lstatSync(nodePath)
 
         if (type.isDirectory()) return { type: "directory", data: { name: nodeName }, children: _walk(nodePath) }
-        if (type.isFile()) return { type: "file", data: { name: nodeName } }
+        if (type.isFile()) return { type: "file", data: { name: nodeName, path: nodePath } }
         return undefined
     }).filter(x => x != undefined) as FileNode[]
 
@@ -26,6 +26,6 @@ export interface Directory extends Parent<Directory | File, { name: string }> {
     type: "directory"
 }
 
-export interface File extends Node<{ name: string }> {
+export interface File extends Node<{ name: string, path: string }> {
     type: "file"
 }

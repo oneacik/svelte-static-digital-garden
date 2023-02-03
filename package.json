@@ -36,9 +36,15 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@tailwindcss/typography": "^0.5.9",
+		"@types/lodash": "^4.14.191",
 		"@types/unist": "^2.0.6",
+		"@vtmn/css-tailwind-preset": "^0.35.42",
 		"daisyui": "^2.50.0",
+		"lodash": "^4.17.21",
+		"svelte-markdown": "^0.2.3",
 		"unist": "^8.0.11",
+		"unist-util-filter": "^4.0.1",
 		"unist-util-select": "^4.0.3"
 	}
 }

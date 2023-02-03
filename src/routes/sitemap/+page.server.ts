@@ -1,5 +1,9 @@
-import {walk, FileNode} from '../../domain/files/unist-file-walk'
+import { walk, FileNode } from '../../domain/files/unist-file-walk'
+import { filterMd } from '../../domain/files/filter/filter-md'
+import _ from 'lodash'
 
-export function load(): FileNode{
-    return walk("./")
+export function load(): FileNode {
+    const files = walk("./_notes")
+    const notes = filterMd(files)
+    return notes
 }
