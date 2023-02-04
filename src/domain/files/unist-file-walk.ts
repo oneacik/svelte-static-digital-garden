@@ -4,7 +4,7 @@ import path from "path"
 
 
 export function walk(dir: string): Directory {
-    return { type: "directory", children: _walk(dir), data: { name: dir } }
+    return { type: "directory", children: _walk(dir), name: dir }
 }
 
 function _walk(dir: string): FileNode[] {
@@ -13,8 +13,8 @@ function _walk(dir: string): FileNode[] {
         const nodePath = path.join(dir, nodeName)
         const type = fs.lstatSync(nodePath)
 
-        if (type.isDirectory()) return { type: "directory", data: { name: nodeName }, children: _walk(nodePath) }
-        if (type.isFile()) return { type: "file", data: { name: nodeName, path: nodePath } }
+        if (type.isDirectory()) return { type: "directory", name: nodeName, children: _walk(nodePath) }
+        if (type.isFile()) return { type: "file", name: nodeName, path: nodePath }
         return undefined
     }).filter(x => x != undefined) as FileNode[]
 
@@ -22,10 +22,13 @@ function _walk(dir: string): FileNode[] {
 
 export type FileNode = File | Directory
 
-export interface Directory extends Parent<Directory | File, { name: string }> {
-    type: "directory"
+export interface Directory extends Parent<Directory | File, {}> {
+    type: "directory",
+    name: string
 }
 
 export interface File extends Node<{ name: string, path: string }> {
-    type: "file"
+    type: "file",
+    name: string,
+    path: string
 }

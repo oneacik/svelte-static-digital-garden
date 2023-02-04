@@ -1,4 +1,3 @@
-import { wrap } from 'lodash'
 import path from 'path'
 
 import { readMd as _readMd} from './domain/file/read-md'
