@@ -8,3 +8,6 @@ export interface MdFile {
 export function load({params}): MdFile | undefined {
     return readMd(params.file) 
 }
+
+export const prerender = 'true';
+export const csr = false;

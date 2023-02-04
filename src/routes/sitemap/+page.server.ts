@@ -7,3 +7,6 @@ export function load(): FileNode {
     const notes = filterMd(files)
     return notes
 }
+
+
+export const prerender = 'auto';

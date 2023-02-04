@@ -11,11 +11,13 @@ export interface MdFile {
 
 export function readMd(filePath): MdFile | undefined {
     console.log(filePath)
-    console.warn(fs.readdirSync("_notes/public/Knowledge/"))
 
     if(!fs.existsSync(filePath)){
-        console.warn("fuck")
         return undefined;
+    }
+
+    if(!filePath.endsWith(".md")){
+        return undefined
     }
 
     return {
