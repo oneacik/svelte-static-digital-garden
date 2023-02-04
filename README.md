@@ -1,3 +1,18 @@
+# Svelte Static Digital Garden
+
+# The F is it?
+
+Statically generated Digital Garden
+
+# How the F does it work?
+
+it uses generated `/sitemap` to list all possible md files needing render in `/garden/[...file]` path.
+
+# Why the F is it so poor?
+
+Work is still in progress.
+Until domain is not structurized well, please fix the styles if you want.
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
