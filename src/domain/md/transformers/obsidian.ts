@@ -5,6 +5,7 @@ import path from 'path'
 
 export const transformObsidian = (contents: string, pathResolver: PathResolver): string =>
     _.chain(contents)
+        .thru(unrollFuckingAnchorBrackets)
         .thru(contents => unrollThoseFuckingNamedBrackets(contents, pathResolver))
         .thru(contents => unrollThoseFuckingBrackets(contents, pathResolver))
         .value()
@@ -21,6 +22,11 @@ const unrollThoseFuckingBrackets = (contents: string, pathResolver: PathResolver
 const unrollThoseFuckingNamedBrackets = (contents: string, pathResolver: PathResolver) =>
     contents.replace(createSimpleRegex("[[link|title]]"), (_, link, title) =>
         `[${title}](${encodeURI(pathResolver(link))})`
+    )
+
+const unrollFuckingAnchorBrackets =  (contents: string) =>
+    contents.replace(createSimpleRegex("[[#anchor]]"), (_, anchor) =>
+        `[${anchor}](#${anchor})`
     )
 
 export type PathResolver = (name: string) => string
