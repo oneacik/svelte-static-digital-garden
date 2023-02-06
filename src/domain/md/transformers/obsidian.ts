@@ -26,7 +26,7 @@ const unrollThoseFuckingNamedBrackets = (contents: string, pathResolver: PathRes
 
 const unrollFuckingAnchorBrackets =  (contents: string) =>
     contents.replace(createSimpleRegex("[[#anchor]]"), (_, anchor) =>
-        `[${anchor}](#${anchor})`
+        `[${anchor}](#${encodeURI(anchor)})`
     )
 
 export type PathResolver = (name: string) => string

@@ -5,7 +5,7 @@
 </script>
 
 {#if data != undefined}
-	<article class="prose prose-sm w-full ">
+	<article class="prose prose-sm w-full max-w-full">
 		<SvelteMarkdown source={data.contents} />
 	</article>
 {/if}
