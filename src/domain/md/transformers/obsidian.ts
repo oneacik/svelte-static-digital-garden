@@ -34,7 +34,6 @@ export function createPathResolverFromFlattenedFiles(prefix: string, files: Flat
     return (name: string) => {
         const filePath = files.find(file => nameMatcher(file.name, name))?.path
         if (!filePath) {
-            console.error(files)
             throw Error(`Can't find shit: ${name}`)
         }
         return path.join(prefix, filePath)

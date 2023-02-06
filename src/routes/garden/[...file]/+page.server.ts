@@ -25,8 +25,6 @@ export function load({ params }): MdFile | undefined {
         const contents: string = mdFile.contents
         const transformedContents = transformMd(contents, pathResolver)
 
-        console.log(transformedContents)
-
         return {
             name: mdFile.name,
             contents: transformedContents
