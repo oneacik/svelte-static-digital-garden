@@ -15,8 +15,11 @@ const config = {
             assets: 'build',
             fallback: null,
             precompress: false,
-            strict: false
-        })
+            strict: false,
+        }),
+        prerender: {
+            handleMissingId: 'warn'
+        }
     }
 };
 
