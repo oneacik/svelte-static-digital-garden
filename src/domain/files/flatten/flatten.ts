@@ -12,7 +12,7 @@ export function flatten(root: FileNode): FlattenedFile[] {
     ))
 }
 
-interface FlattenedFile {
+export interface FlattenedFile {
     name: string,
     path: string,
     content: () => string,

@@ -5,7 +5,7 @@
 </script>
 
 {#if data != undefined}
-	<article class="prose lg:prose-xl w-full mx-auto text-xl lg:text-xl">
+	<article class="prose prose-sm w-full ">
 		<SvelteMarkdown source={data.contents} />
 	</article>
 {/if}

@@ -10,8 +10,8 @@ describe("given test _notes tree", () => {
     beforeEach(() => {
         tree = walk("./tests/_notes/")
     })
-    
-    it("when flattened then not cringe", ()=>{
+
+    it("when flattened then not cringe", () => {
         const flattenedFiles = flatten(tree)
 
         expect(flattenedFiles).toMatchObject([
