@@ -10,20 +10,30 @@ export interface MdFile {
 }
 
 export function load({ params }): MdFile | undefined {
-    const fileTree = getFileTree()
-    const flattened = flatten(fileTree)
+    try {
+        const fileTree = getFileTree()
+        const flattened = flatten(fileTree)
 
-    const pathResolver = createPathResolverFromFlattenedFiles("/garden/", flattened, (fileName, name) => fileName.toLowerCase() == `${name.toLowerCase()}.md`)
-    const mdFile: MdFile = readMd(params.file)
-    const contents: string = mdFile.contents
-    const transformedContents = transformMd(contents, pathResolver)
+        const pathResolver = createPathResolverFromFlattenedFiles("/garden/", flattened, (fileName, name) => fileName.toLowerCase() == `${name.toLowerCase()}.md`)
+        const mdFile: MdFile | undefined = readMd(params.file)
 
-    console.log(transformedContents)
+        if (!mdFile) {
+            console.error(`no file for: ${params.file}`)
+            return undefined;
+        }
 
-    return {
-        name: mdFile.name,
-        contents: transformedContents
+        const contents: string = mdFile.contents
+        const transformedContents = transformMd(contents, pathResolver)
 
+        console.log(transformedContents)
+
+        return {
+            name: mdFile.name,
+            contents: transformedContents
+        }
+    } catch (e) {
+        console.error(`failed to generate page for slug ${params.file}`)
+        return undefined;
     }
 }
 
