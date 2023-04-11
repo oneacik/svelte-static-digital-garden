@@ -2,7 +2,7 @@ name: Submodule Sync
 on:
   repository_dispatch:
     types:
-      - update-mindoo
+      - update-beta-garden
 
 jobs:
   submodule-sync:
